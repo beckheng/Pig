@@ -1,0 +1,7 @@
+package Pig;
+
+message PigRequest
+{
+	required string action = 1;
+	required string body = 2;
+}
