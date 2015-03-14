@@ -3,5 +3,7 @@ package Pig;
 message PigRequest
 {
 	required string action = 1;
-	required string body = 2;
+	optional string body = 2;
+	optional string extra = 3;
+	optional int32 timestamp = 4;
 }

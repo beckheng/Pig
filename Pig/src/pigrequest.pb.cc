@@ -34,9 +34,10 @@ void protobuf_AssignDesc_pigrequest_2eproto() {
       "pigrequest.proto");
   GOOGLE_CHECK(file != NULL);
   PigRequest_descriptor_ = file->message_type(0);
-  static const int PigRequest_offsets_[2] = {
+  static const int PigRequest_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PigRequest, action_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PigRequest, body_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PigRequest, extra_),
   };
   PigRequest_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,8 +80,9 @@ void protobuf_AddDesc_pigrequest_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020pigrequest.proto\022\003Pig\"*\n\nPigRequest\022\016\n"
-    "\006action\030\001 \002(\t\022\014\n\004body\030\002 \002(\t", 67);
+    "\n\020pigrequest.proto\022\003Pig\"9\n\nPigRequest\022\016\n"
+    "\006action\030\001 \002(\t\022\014\n\004body\030\002 \001(\t\022\r\n\005extra\030\003 \001"
+    "(\t", 82);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "pigrequest.proto", &protobuf_RegisterTypes);
   PigRequest::default_instance_ = new PigRequest();
@@ -100,6 +102,7 @@ struct StaticDescriptorInitializer_pigrequest_2eproto {
 #ifndef _MSC_VER
 const int PigRequest::kActionFieldNumber;
 const int PigRequest::kBodyFieldNumber;
+const int PigRequest::kExtraFieldNumber;
 #endif  // !_MSC_VER
 
 PigRequest::PigRequest()
@@ -123,6 +126,7 @@ void PigRequest::SharedCtor() {
   _cached_size_ = 0;
   action_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   body_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  extra_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -137,6 +141,9 @@ void PigRequest::SharedDtor() {
   }
   if (body_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete body_;
+  }
+  if (extra_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete extra_;
   }
   if (this != default_instance_) {
   }
@@ -164,7 +171,7 @@ PigRequest* PigRequest::New() const {
 }
 
 void PigRequest::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
+  if (_has_bits_[0 / 32] & 7) {
     if (has_action()) {
       if (action_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         action_->clear();
@@ -173,6 +180,11 @@ void PigRequest::Clear() {
     if (has_body()) {
       if (body_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         body_->clear();
+      }
+    }
+    if (has_extra()) {
+      if (extra_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        extra_->clear();
       }
     }
   }
@@ -206,7 +218,7 @@ bool PigRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // required string body = 2;
+      // optional string body = 2;
       case 2: {
         if (tag == 18) {
          parse_body:
@@ -216,6 +228,23 @@ bool PigRequest::MergePartialFromCodedStream(
             this->body().data(), this->body().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
             "body");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_extra;
+        break;
+      }
+
+      // optional string extra = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_extra:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_extra()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->extra().data(), this->extra().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "extra");
         } else {
           goto handle_unusual;
         }
@@ -258,7 +287,7 @@ void PigRequest::SerializeWithCachedSizes(
       1, this->action(), output);
   }
 
-  // required string body = 2;
+  // optional string body = 2;
   if (has_body()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->body().data(), this->body().length(),
@@ -266,6 +295,16 @@ void PigRequest::SerializeWithCachedSizes(
       "body");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->body(), output);
+  }
+
+  // optional string extra = 3;
+  if (has_extra()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->extra().data(), this->extra().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "extra");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->extra(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -289,7 +328,7 @@ void PigRequest::SerializeWithCachedSizes(
         1, this->action(), target);
   }
 
-  // required string body = 2;
+  // optional string body = 2;
   if (has_body()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->body().data(), this->body().length(),
@@ -298,6 +337,17 @@ void PigRequest::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->body(), target);
+  }
+
+  // optional string extra = 3;
+  if (has_extra()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->extra().data(), this->extra().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "extra");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->extra(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -319,11 +369,18 @@ int PigRequest::ByteSize() const {
           this->action());
     }
 
-    // required string body = 2;
+    // optional string body = 2;
     if (has_body()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->body());
+    }
+
+    // optional string extra = 3;
+    if (has_extra()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->extra());
     }
 
   }
@@ -359,6 +416,9 @@ void PigRequest::MergeFrom(const PigRequest& from) {
     if (from.has_body()) {
       set_body(from.body());
     }
+    if (from.has_extra()) {
+      set_extra(from.extra());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -376,7 +436,7 @@ void PigRequest::CopyFrom(const PigRequest& from) {
 }
 
 bool PigRequest::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }
@@ -385,6 +445,7 @@ void PigRequest::Swap(PigRequest* other) {
   if (other != this) {
     std::swap(action_, other->action_);
     std::swap(body_, other->body_);
+    std::swap(extra_, other->extra_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

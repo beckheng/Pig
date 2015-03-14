@@ -2,6 +2,8 @@
 
 #include "src/pigrequest.pb.h"
 
+#include "src/pigrouter.h"
+
 using namespace std;
 using namespace Pig;
 
@@ -9,14 +11,16 @@ int main()
 {
     cout << "Pig Run!" << endl;
 
-    PigRequest *request = new PigRequest();
-    string action = "hello world";
-    request->set_action(action);
-    request->set_body("helloobject");
+    PigRouter::registerRoute();
 
-    cout << request->SerializeAsString() << endl;
+    PigRequest request;
+    string action = "/user/register";
+    request.set_action(action);
 
-    delete request;
+    cout << request.SerializeAsString() << endl;
+
+    PigResponse rep = PigRouter::dispatch(request);
+    cout << rep.SerializeAsString() << endl;
 
     return 0;
 }

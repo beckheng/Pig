@@ -102,7 +102,7 @@ class PigRequest : public ::google::protobuf::Message {
   inline ::std::string* release_action();
   inline void set_allocated_action(::std::string* action);
 
-  // required string body = 2;
+  // optional string body = 2;
   inline bool has_body() const;
   inline void clear_body();
   static const int kBodyFieldNumber = 2;
@@ -114,12 +114,26 @@ class PigRequest : public ::google::protobuf::Message {
   inline ::std::string* release_body();
   inline void set_allocated_body(::std::string* body);
 
+  // optional string extra = 3;
+  inline bool has_extra() const;
+  inline void clear_extra();
+  static const int kExtraFieldNumber = 3;
+  inline const ::std::string& extra() const;
+  inline void set_extra(const ::std::string& value);
+  inline void set_extra(const char* value);
+  inline void set_extra(const char* value, size_t size);
+  inline ::std::string* mutable_extra();
+  inline ::std::string* release_extra();
+  inline void set_allocated_extra(::std::string* extra);
+
   // @@protoc_insertion_point(class_scope:Pig.PigRequest)
  private:
   inline void set_has_action();
   inline void clear_has_action();
   inline void set_has_body();
   inline void clear_has_body();
+  inline void set_has_extra();
+  inline void clear_has_extra();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -127,6 +141,7 @@ class PigRequest : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::std::string* action_;
   ::std::string* body_;
+  ::std::string* extra_;
   friend void  protobuf_AddDesc_pigrequest_2eproto();
   friend void protobuf_AssignDesc_pigrequest_2eproto();
   friend void protobuf_ShutdownFile_pigrequest_2eproto();
@@ -217,7 +232,7 @@ inline void PigRequest::set_allocated_action(::std::string* action) {
   // @@protoc_insertion_point(field_set_allocated:Pig.PigRequest.action)
 }
 
-// required string body = 2;
+// optional string body = 2;
 inline bool PigRequest::has_body() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -291,6 +306,82 @@ inline void PigRequest::set_allocated_body(::std::string* body) {
     body_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:Pig.PigRequest.body)
+}
+
+// optional string extra = 3;
+inline bool PigRequest::has_extra() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void PigRequest::set_has_extra() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void PigRequest::clear_has_extra() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void PigRequest::clear_extra() {
+  if (extra_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    extra_->clear();
+  }
+  clear_has_extra();
+}
+inline const ::std::string& PigRequest::extra() const {
+  // @@protoc_insertion_point(field_get:Pig.PigRequest.extra)
+  return *extra_;
+}
+inline void PigRequest::set_extra(const ::std::string& value) {
+  set_has_extra();
+  if (extra_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    extra_ = new ::std::string;
+  }
+  extra_->assign(value);
+  // @@protoc_insertion_point(field_set:Pig.PigRequest.extra)
+}
+inline void PigRequest::set_extra(const char* value) {
+  set_has_extra();
+  if (extra_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    extra_ = new ::std::string;
+  }
+  extra_->assign(value);
+  // @@protoc_insertion_point(field_set_char:Pig.PigRequest.extra)
+}
+inline void PigRequest::set_extra(const char* value, size_t size) {
+  set_has_extra();
+  if (extra_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    extra_ = new ::std::string;
+  }
+  extra_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:Pig.PigRequest.extra)
+}
+inline ::std::string* PigRequest::mutable_extra() {
+  set_has_extra();
+  if (extra_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    extra_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:Pig.PigRequest.extra)
+  return extra_;
+}
+inline ::std::string* PigRequest::release_extra() {
+  clear_has_extra();
+  if (extra_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = extra_;
+    extra_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void PigRequest::set_allocated_extra(::std::string* extra) {
+  if (extra_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete extra_;
+  }
+  if (extra) {
+    set_has_extra();
+    extra_ = extra;
+  } else {
+    clear_has_extra();
+    extra_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:Pig.PigRequest.extra)
 }
 
 
