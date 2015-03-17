@@ -14,6 +14,7 @@ public:
 
 public:
     PigResponse test(PigRequest request);
+    PigResponse login(PigRequest request);
 };
 
 #endif // USERSERVICE_H

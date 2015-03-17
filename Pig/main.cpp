@@ -22,5 +22,17 @@ int main()
     PigResponse rep = PigRouter::dispatch(request);
     cout << rep.SerializeAsString() << endl;
 
+    action = "haha";
+    request.set_action(action);
+
+    rep = PigRouter::dispatch(request);
+    cout << rep.SerializeAsString() << endl;
+
+    action = "/user/login";
+    request.set_action(action);
+
+    rep = PigRouter::dispatch(request);
+    cout << rep.status() << " " << rep.SerializeAsString() << endl;
+
     return 0;
 }
