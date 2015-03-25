@@ -18,8 +18,10 @@ PigRouter::~PigRouter()
 
 void PigRouter::registerRoute()
 {
-   router.insert(SERVICE_MAP("/user/register", UserService, test));
-   router.insert(SERVICE_MAP("/user/login", UserService, login));
+   router.insert(SERVICE_MAP("/user/register", UserService, normalRegister));
+   router.insert(SERVICE_MAP("/user/fastRegister", UserService, fastRegister));
+   router.insert(SERVICE_MAP("/user/login", UserService, normalLogin));
+   router.insert(SERVICE_MAP("/user/login", UserService, thirdLogin));
 }
 
 PigResponse PigRouter::dispatch(const PigRequest &request)

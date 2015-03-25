@@ -12,17 +12,31 @@ UserService::~UserService()
 
 }
 
-PigResponse UserService::test(PigRequest request)
+PigResponse UserService::normalRegister(PigRequest request)
 {
- PigResponse rep;
+    PigResponse rep;
+    rep.set_status(StatusCode::RESP_200);
 
- rep.set_status(StatusCode::RESP_200);
- rep.set_data("haha, now u c me?");
-
- return rep;
+    return rep;
 }
 
-PigResponse UserService::login(PigRequest request)
+PigResponse UserService::fastRegister(PigRequest request)
+{
+    PigResponse rep;
+    rep.set_status(StatusCode::RESP_200);
+
+    return rep;
+}
+
+PigResponse UserService::thirdLogin(PigRequest request)
+{
+    PigResponse rep;
+    rep.set_status(StatusCode::RESP_200);
+
+    return rep;
+}
+
+PigResponse UserService::normalLogin(PigRequest request)
 {
     PigResponse rep;
     rep.set_status(StatusCode::RESP_200);

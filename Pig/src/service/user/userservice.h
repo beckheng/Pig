@@ -13,8 +13,11 @@ public:
     ~UserService();
 
 public:
-    PigResponse test(PigRequest request);
-    PigResponse login(PigRequest request);
+    PigResponse normalRegister(PigRequest request);
+    PigResponse fastRegister(PigRequest request);
+
+    PigResponse thirdLogin(PigRequest request);
+    PigResponse normalLogin(PigRequest request);
 };
 
 #endif // USERSERVICE_H
